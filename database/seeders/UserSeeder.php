@@ -68,51 +68,51 @@ class UserSeeder extends Seeder
             * Zerbib-Wronka Eva
          */
         $users = [
-            // [
-            //     'firstname' => 'Zakaria',
-            //     'lastname' => 'Benazzouz',
-            //     'role' => 'student',
-            // ],
-            // [
-            //     'firstname' => 'Marc',
-            //     'lastname' => 'Chevalier',
-            //     'role' => 'student',
-            // ],
+            [
+                'firstname' => 'Zakaria',
+                'lastname' => 'Benazzouz',
+                'role' => 'student',
+            ],
+            [
+                'firstname' => 'Marc',
+                'lastname' => 'Chevalier',
+                'role' => 'student',
+            ],
             // [
             //     'firstname' => 'Mathias',
             //     'lastname' => 'De Barros',
             //     'role' => 'admin',
             // ],
-            // [
-            //     'firstname' => 'Alen',
-            //     'lastname' => 'Duka',
-            //     'role' => 'student',
-            // ],
-            // [
-            //     'firstname' => 'Quentin',
-            //     'lastname' => 'Erard',
-            //     'role' => 'student',
-            // ],
-            // [
-            //     'firstname' => 'Cameron',
-            //     'lastname' => 'Gandon',
-            //     'role' => 'student',
-            // ],
-            // [
-            //     'firstname' => 'Noemie',
-            //     'lastname' => 'Mathiot',
-            //     'role' => 'student',
-            // ],
-            // [
-            //     'firstname' => 'Alexis',
-            //     'lastname' => 'Messier',
-            //     'role' => 'student',
-            // ],
-            // [
-            //     'firstname' => 'Luca',
-            //     'lastname' => 'Moreira',
-            //     'role' => 'student',
-            // ],
+            [
+                'firstname' => 'Alen',
+                'lastname' => 'Duka',
+                'role' => 'student',
+            ],
+            [
+                'firstname' => 'Quentin',
+                'lastname' => 'Erard',
+                'role' => 'student',
+            ],
+            [
+                'firstname' => 'Cameron',
+                'lastname' => 'Gandon',
+                'role' => 'student',
+            ],
+            [
+                'firstname' => 'Noemie',
+                'lastname' => 'Mathiot',
+                'role' => 'student',
+            ],
+            [
+                'firstname' => 'Alexis',
+                'lastname' => 'Messier',
+                'role' => 'student',
+            ],
+            [
+                'firstname' => 'Luca',
+                'lastname' => 'Moreira',
+                'role' => 'student',
+            ],
             [
                 'firstname' => 'Jose Moris',
                 'lastname' => 'Musuasua',
