@@ -23,38 +23,30 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', function() {
-        $email = Mail::to('debarmat@etu.univ-grenoble-alpes.fr')->send(new WelcomeMail([
-                'login' => 'debarmat',
-                'password' => 'password',
-        ]));
-        dd($email);
-});
-
 Auth::routes([
         'register' => false,
         'reset' => false,
         'verify' => false,
 ]);
 
-// Route::prefix('/')->middleware('auth')->group(function () {
+Route::prefix('/')->middleware('auth')->group(function () {
 
-//         Route::get('/', [HomeworkController::class, 'index']);
-//         Route::get('/home', [HomeworkController::class, 'index'])->name('home');
+        Route::get('/', [HomeworkController::class, 'index']);
+        Route::get('/home', [HomeworkController::class, 'index'])->name('home');
 
-//         Route::resource('homeworks', HomeworkController::class);
-//         Route::resource('courses', CourseController::class);
-//         Route::resource('teachers', TeacherController::class);
+        Route::resource('homeworks', HomeworkController::class);
+        Route::resource('courses', CourseController::class);
+        Route::resource('teachers', TeacherController::class);
 
-//         Route::resource('roles', RoleController::class);
-//         Route::resource('permissions', PermissionController::class);
+        Route::resource('roles', RoleController::class);
+        Route::resource('permissions', PermissionController::class);
 
-//         Route::prefix('settings')->name('settings.')->middleware('role:admin')->group(function () {
-//                 Route::get('/', [PageController::class, 'settings'])->name('index');
-//                 Route::post('/update', [PageController::class, 'updateSettings'])->name('update');
-//         });
+        Route::prefix('settings')->name('settings.')->middleware('role:admin')->group(function () {
+                Route::get('/', [PageController::class, 'settings'])->name('index');
+                Route::post('/update', [PageController::class, 'updateSettings'])->name('update');
+        });
 
-//         // Route::get('/test-email', function () {
-//         //         return new WelcomeMail(auth()->user());
-//         // });
-// });
+        // Route::get('/test-email', function () {
+        //         return new WelcomeMail(auth()->user());
+        // });
+});
