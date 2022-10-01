@@ -24,7 +24,7 @@
                     </h1>
                 </div>
                 <a class="btn btn-lg btn-primary" href="{{ route('homeworks.create') }}">
-                    <i class="bi bi-plus-lg"></i>
+                    <i class="bi bi-plus-lg me-2"></i>
                     Nouveau
                 </a>
             </div>

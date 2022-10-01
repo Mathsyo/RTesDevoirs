@@ -62,13 +62,61 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary w-100">
-                        <i class="bi bi-check-lg"></i>
-                        Enregistrer
-                    </button>
+                    @if(session()->has('confirm'))
+                        <input type="text" name="force" class="d-none" value="1">
+                        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content rounded-4 ">
+                                    <div class="modal-header p-4">
+                                        <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body p-4">
+                                        <span class="fs-3 text-danger mb-3">
+                                            {{ session()->get('confirm') }}
+                                        </span>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <span class="fw-bold">Titre du devoir :</span>
+                                                <span class="ms-2">{{ session()->get('homeworkCheck')->title }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="fw-bold">Description du devoir :</span>
+                                                <span class="ms-2">{{ session()->get('homeworkCheck')->description }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="fw-bold">Date de rendu :</span>
+                                                <span class="ms-2">{{ session()->get('homeworkCheck')->deadline }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span class="fw-bold">Matière :</span>
+                                                <span class="ms-2">{{ session()->get('homeworkCheck')->course->code }} - {{ session()->get('homeworkCheck')->course->acronym ?? session()->get('homeworkCheck')->course->name }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer justify-content-between p-4">
+                                        <a type="button" class="btn btn-outline-secondary border-0" href="{{ route('home') }}">Annuler</a>
+                                        <button class="btn btn-primary" id="confirm" type="submit">Confirmer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            // on page loaded, show modal
+                            window.addEventListener('load', function() {
+                                $('#confirmModal').modal('show');
+                            });
+                        </script>
+                    @else
+                        <button type="submit" class="btn btn-lg btn-primary w-100">
+                            <i class="bi bi-check-lg"></i>
+                            Enregistrer
+                        </button>
+                    @endif
 
                 </form>
             </div>
         </div>
     </div>
+
 @endsection

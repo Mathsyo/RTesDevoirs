@@ -8,12 +8,24 @@ use Livewire\Component;
 class ListHomework extends Component
 {
 
+    public $course;
+
+    public function toggleDone($homeworkId)
+    {
+        $homework = Homework::find($homeworkId);
+        $homework->done ? $homework->undone() : $homework->done();
+    }
+
     public function render()
     {
-        $homeworks = Homework::all()->groupBy(function ($homework) {
-            return $homework->deadline->format('Y-m-d');
-        });
-        dd($homeworks);
+        if($this->course) {
+            $homeworks = $this->course->homeworks->groupBy('deadline');;
+        } else {
+            $homeworks = Homework
+            ::orderBy('deadline', 'asc')
+            ->get()
+            ->groupBy('deadline');
+        }
         return view('livewire.homework.list-homework', compact('homeworks'));
     }
 }

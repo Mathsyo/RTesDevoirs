@@ -40,10 +40,22 @@ class HomeworkController extends Controller
     public function store(StoreRequest $request)
     {
         $validated = $request->validated();
-        $homework = Homework::where('title', $validated['title'])->first();
-        if ($homework) {
-            return redirect()->back()->with('error', 'Un devoir avec le même titre existe déjà.');
+
+        // check if homework with same deadline and course exists
+        $homeworkCheck = Homework::where('deadline', $validated['deadline'])
+            ->where('course_id', $validated['course_id'])
+            ->first();
+        if (!isset($validated['force'])) {
+            if ($homeworkCheck) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->with('confirm', 'Un devoir avec la même date existe déjà pour ce cours. Voulez-vous confirmer ?')
+                    ->with('homeworkCheck', $homeworkCheck);
+            }
         }
+
+
         $homework = new Homework;
         $homework->title = $validated['title'];
         $homework->description = $validated['description'];

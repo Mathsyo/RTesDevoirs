@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
+use App\Models\Teacher;
 use Illuminate\Database\Seeder;
 
 class CourseSeeder extends Seeder
@@ -30,12 +31,20 @@ class CourseSeeder extends Seeder
                 'name' => 'Initiation aux Réseaux Informatiques',
                 'acronym' => 'InitRes',
                 'color' => $this->randomHexPastelColor(),
+                'teacher' => [
+                    'lastname' => 'Despinasse',
+                    'firstname' => 'Bruno',
+                ]
             ],
             [
                 'code' => 'R102',
                 'name' => 'Principes et Architecture des Réseaux',
                 'acronym' => 'ArchiRes',
                 'color' => $this->randomHexPastelColor(),
+                'teacher' => [
+                    'lastname' => 'Escande',
+                    'firstname' => 'Eric',
+                ]
             ],
             [
                 'code' => 'R103',
@@ -60,12 +69,20 @@ class CourseSeeder extends Seeder
                 'name' => 'Architecture des systèmes numériques et informatique',
                 'acronym' => 'ArchiInfo',
                 'color' => $this->randomHexPastelColor(),
+                'teacher' => [
+                    'lastname' => 'Fayolle',
+                    'firstname' => 'Gerard',
+                ]
             ],
             [
                 'code' => 'R107',
                 'name' => 'Fondamentaux de la programmaton',
                 'acronym' => 'Python',
                 'color' => $this->randomHexPastelColor(),
+                'teacher' => [
+                    'lastname' => 'Goeuriot',
+                    'firstname' => 'Lorraine',
+                ]
             ],
             [
                 'code' => 'R108',
@@ -102,6 +119,10 @@ class CourseSeeder extends Seeder
                 'name' => 'Mathématiques du signal',
                 'acronym' => 'MathSignal',
                 'color' => $this->randomHexPastelColor(),
+                'teacher' => [
+                    'lastname' => 'Siclet',
+                    'firstname' => 'Cyrille',
+                ]
             ],
             [
                 'code' => 'R114',
@@ -114,6 +135,10 @@ class CourseSeeder extends Seeder
                 'name' => 'Gestion de projet',
                 'acronym' => 'GestProj',
                 'color' => $this->randomHexPastelColor(),
+                'teacher' => [
+                    'lastname' => 'Martin',
+                    'firstname' => 'Jerome',
+                ]
             ],
             [
                 'code' => 'SAE101',
@@ -150,7 +175,21 @@ class CourseSeeder extends Seeder
         ];
 
         foreach ($courses as $course) {
-            Course::create($course);
+            // remove teacher from course
+            $teacher = $course['teacher'] ?? null;
+            unset($course['teacher']);
+
+            $course = Course::create($course);
+
+            if ($teacher) {
+                $teacher = Teacher::create([
+                    'lastname' => $teacher['lastname'],
+                    'firstname' => $teacher['firstname'],
+                    'email' => $teacher['firstname'].'.'.$teacher['lastname'].'@univ-grenoble-alpes.fr',
+                ]);
+                $course->teacher_id = $teacher->id;
+                $course->save();
+            }
         }
     }
 }

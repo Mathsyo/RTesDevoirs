@@ -16,7 +16,7 @@ class User extends Authenticatable
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'email', 'phone', 'password'];
+    protected $fillable = ['lastname','firstname','login', 'email', 'password'];
 
     protected $searchableFields = ['*'];
 
@@ -27,7 +27,7 @@ class User extends Authenticatable
         return $this->hasMany(DoneHomework::class);
     }
 
-    public function isSuperAdmin() {
+    public function isAdmin() {
         return $this->hasRole('admin');
     }
 

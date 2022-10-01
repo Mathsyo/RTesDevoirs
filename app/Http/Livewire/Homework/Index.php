@@ -29,6 +29,11 @@ class Index extends Component
         $this->homeworksView = $this->homeworksViews[$type];
     }
 
+    public function updated() 
+    {
+        dd($this->homeworksView);
+    }
+
     public function mount()
     {
         $this->setHomeworksView(1);

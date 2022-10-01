@@ -33,8 +33,21 @@ class Homework extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function isDone() 
+    public function getDoneAttribute()
     {
         return DoneHomework::where('user_id', auth()->id())->where('homework_id', $this->id)->exists();
+    }
+
+    public function done()
+    {
+        DoneHomework::create([
+            'user_id' => auth()->id(),
+            'homework_id' => $this->id,
+        ]);
+    }
+
+    public function undone()
+    {
+        DoneHomework::where('user_id', auth()->id())->where('homework_id', $this->id)->delete();
     }
 }

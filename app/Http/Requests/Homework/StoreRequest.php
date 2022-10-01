@@ -28,6 +28,7 @@ class StoreRequest extends FormRequest
             'description' => 'required|string',
             'course_id' => 'required|integer|exists:courses,id',
             'deadline' => 'required|date',
+            'force' => 'nullable|boolean',
         ];
     }
 }
