@@ -45,8 +45,4 @@ Route::prefix('/')->middleware('auth')->group(function () {
                 Route::get('/', [PageController::class, 'settings'])->name('index');
                 Route::post('/update', [PageController::class, 'updateSettings'])->name('update');
         });
-
-        // Route::get('/test-email', function () {
-        //         return new WelcomeMail(auth()->user());
-        // });
 });
