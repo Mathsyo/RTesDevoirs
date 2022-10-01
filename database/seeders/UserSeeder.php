@@ -68,51 +68,51 @@ class UserSeeder extends Seeder
             * Zerbib-Wronka Eva
          */
         $users = [
-            [
-                'firstname' => 'Zakaria',
-                'lastname' => 'Benazzouz',
-                'role' => 'student',
-            ],
-            [
-                'firstname' => 'Marc',
-                'lastname' => 'Chevalier',
-                'role' => 'student',
-            ],
+            // [
+            //     'firstname' => 'Zakaria',
+            //     'lastname' => 'Benazzouz',
+            //     'role' => 'student',
+            // ],
+            // [
+            //     'firstname' => 'Marc',
+            //     'lastname' => 'Chevalier',
+            //     'role' => 'student',
+            // ],
             // [
             //     'firstname' => 'Mathias',
             //     'lastname' => 'De Barros',
             //     'role' => 'admin',
             // ],
-            [
-                'firstname' => 'Alen',
-                'lastname' => 'Duka',
-                'role' => 'student',
-            ],
-            [
-                'firstname' => 'Quentin',
-                'lastname' => 'Erard',
-                'role' => 'student',
-            ],
-            [
-                'firstname' => 'Cameron',
-                'lastname' => 'Gandon',
-                'role' => 'student',
-            ],
-            [
-                'firstname' => 'Noemie',
-                'lastname' => 'Mathiot',
-                'role' => 'student',
-            ],
-            [
-                'firstname' => 'Alexis',
-                'lastname' => 'Messier',
-                'role' => 'student',
-            ],
-            [
-                'firstname' => 'Luca',
-                'lastname' => 'Moreira',
-                'role' => 'student',
-            ],
+            // [
+            //     'firstname' => 'Alen',
+            //     'lastname' => 'Duka',
+            //     'role' => 'student',
+            // ],
+            // [
+            //     'firstname' => 'Quentin',
+            //     'lastname' => 'Erard',
+            //     'role' => 'student',
+            // ],
+            // [
+            //     'firstname' => 'Cameron',
+            //     'lastname' => 'Gandon',
+            //     'role' => 'student',
+            // ],
+            // [
+            //     'firstname' => 'Noemie',
+            //     'lastname' => 'Mathiot',
+            //     'role' => 'student',
+            // ],
+            // [
+            //     'firstname' => 'Alexis',
+            //     'lastname' => 'Messier',
+            //     'role' => 'student',
+            // ],
+            // [
+            //     'firstname' => 'Luca',
+            //     'lastname' => 'Moreira',
+            //     'role' => 'student',
+            // ],
             [
                 'firstname' => 'Jose Moris',
                 'lastname' => 'Musuasua',
@@ -213,7 +213,7 @@ class UserSeeder extends Seeder
         foreach ($users as $user) {
             // email is firstname.lastname@etu.univ-grenoble-alpes.fr
             // set - to space in lastname
-            $user['email'] = strtolower($user['firstname'] . '.' . str_replace(' ', '-', $user['lastname']) . '@etu.univ-grenoble-alpes.fr');
+            $user['email'] = strtolower(str_replace(' ', '-', $user['firstname']) . '.' . str_replace(' ', '-', $user['lastname']) . '@etu.univ-grenoble-alpes.fr');
             $user['login'] = strtolower(str_replace(['-', ' '],['', ''],trim($user['lastname']))) . '_' . strtolower(substr($user['firstname'], 0, 1));
             $user['password'] = $this->generatePassword();
 

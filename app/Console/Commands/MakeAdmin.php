@@ -42,7 +42,7 @@ class MakeAdmin extends Command
             'firstname' => $firstname,
             'lastname' => $lastname,
             'login' => strtolower(str_replace(['-', ' '],['', ''],trim($lastname))) . '_' . strtolower(substr($firstname, 0, 1)),
-            'email' => $firstname.'.'.str_replace(' ', '-', $lastname).'@etu.grenoble-alpes.fr',
+            'email' => str_replace(' ', '-', $firstname).'.'.str_replace(' ', '-', $lastname).'@etu.grenoble-alpes.fr',
             'password' => bcrypt($password),
         ]);
         $user->assignRole('admin');
