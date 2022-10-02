@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Homework\StoreRequest;
+use App\Http\Requests\Homework\UpdateRequest;
 use App\Models\Course;
 use App\Models\Homework;
 use Illuminate\Http\Request;
@@ -10,33 +11,18 @@ use Illuminate\Support\Str;
 
 class HomeworkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('homeworks.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $courses = Course::all();
         return view('homeworks.create', compact('courses'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreRequest $request)
     {
         $validated = $request->validated();
@@ -68,38 +54,21 @@ class HomeworkController extends Controller
         return redirect()->route('homeworks.index')->with('success', 'Le devoir a été créé avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Homework $homework)
     {
-        //
+        return view('homeworks.show', compact('homework'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Homework $homework)
     {
-        //
+        $courses = Course::all();
+        return view('homeworks.edit', compact('homework', 'courses'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Homework $homework)
     {
-        //
+        $homework->update($request->validated());
+        return redirect()->route('homeworks.show', $homework)->with('success', 'Le devoir a été mis à jour avec succès.');
     }
 
     /**
@@ -108,8 +77,10 @@ class HomeworkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Homework $homework)
     {
-        //
+        $homework->delete();
+        return redirect()->route('homeworks.index')->with('success', 'Le devoir a été supprimé avec succès.');
     }
+    
 }

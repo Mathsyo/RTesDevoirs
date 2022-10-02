@@ -13,12 +13,32 @@ class User extends Authenticatable
 {
     use HasRoles;
     use Notifiable;
-    use HasFactory;
-    use Searchable;
 
-    protected $fillable = ['lastname','firstname','login', 'email', 'password'];
+    protected $fillable = [
+        'lastname',
+        'firstname',
+        'login', 
+        'email', 
+        'password'
+    ];
 
-    protected $searchableFields = ['*'];
+    public $storeRules = [
+        'lastname' => ['required','string','max:255'], 
+        'firstname' => ['required','string','max:255'], 
+        'login' => ['required','string','max:255'], 
+        'email' => ['required','string','max:255'], 
+        'password' => ['required','string','max:255'],
+    ];
+
+    public $updateRules = [
+        'lastname' => ['sometimes','string','max:255'], 
+        'firstname' => ['sometimes','string','max:255'], 
+        'login' => ['sometimes','string','max:255'], 
+        'email' => ['sometimes','string','max:255'], 
+        'password' => ['sometimes','string','max:255'],
+    ];
+
+    protected $table = 'users';
 
     protected $hidden = ['password'];
 

@@ -9,6 +9,7 @@ use Jackiedo\DotenvEditor\Facades\DotenvEditor;
 
 class PageController extends Controller
 {
+    
     public function settings() 
     {
         return view('pages.settings.index');

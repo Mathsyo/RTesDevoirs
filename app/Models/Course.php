@@ -8,12 +8,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
-    use HasFactory;
-    use Searchable;
 
-    protected $fillable = ['color', 'name', 'acronym', 'code'];
+    protected $fillable = [
+        'color', 
+        'name', 
+        'acronym', 
+        'code', 
+        'teacher_id'
+    ];
 
-    protected $searchableFields = ['*'];
+    public $storeRules = [
+        'color' => ['required','string','max:255'], 
+        'name' => ['required','string','max:255'], 
+        'acronym' => ['required','string','max:255'], 
+        'code' => ['required','string','max:255'], 
+        'teacher_id' => ['required','integer','exists:teachers,id'],
+    ];
+
+    public $updateRules = [
+        'color' => ['sometimes','string','max:255'], 
+        'name' => ['sometimes','string','max:255'], 
+        'acronym' => ['sometimes','string','max:255'], 
+        'code' => ['sometimes','string','max:255'], 
+        'teacher_id' => ['sometimes','integer','exists:teachers,id'],
+    ];
+
+    protected $table = 'courses';
 
     public function homeworks()
     {

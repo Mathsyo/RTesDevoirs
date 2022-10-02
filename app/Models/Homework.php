@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Homework extends Model
 {
-    use HasFactory;
-    use Searchable;
 
     protected $fillable = [
         'title',
@@ -20,7 +18,23 @@ class Homework extends Model
         'course_id',
     ];
 
-    protected $searchableFields = ['*'];
+    public $storeRules = [
+        'title' => ['required','string','max:255'],
+        'description' => ['required','string','max:255'],
+        'slug' => ['required','string','max:255'],
+        'deadline' => ['required','date'],
+        'type' => ['required','integer'],
+        'course_id' => ['required','integer','exists:courses,id'],
+    ];
+
+    public $updateRules = [
+        'title' => ['sometimes','string','max:255'],
+        'description' => ['sometimes','string','max:255'],
+        'slug' => ['sometimes','string','max:255'],
+        'deadline' => ['sometimes','date'],
+        'type' => ['sometimes','integer'],
+        'course_id' => ['sometimes','integer','exists:courses,id'],
+    ];
 
     protected $table = 'homeworks';
 

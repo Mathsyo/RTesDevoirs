@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DoneHomework extends Model
 {
-    use HasFactory;
-    use Searchable;
 
-    protected $fillable = ['user_id', 'homework_id'];
-
-    protected $searchableFields = ['*'];
+    protected $fillable = [
+        'user_id', 
+        'homework_id'
+    ];
 
     protected $table = 'done_homeworks';
 

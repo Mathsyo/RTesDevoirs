@@ -8,8 +8,14 @@
                     <a href="{{ route('home') }}" class="text-decoration-none text-dark me-2">
                         <i class="bi bi-arrow-left"></i>
                     </a>
-                    Tous les cours
+                    Toutes les matières
                 </h1>
+                @if(auth()->user()->isAdmin())
+                    <a class="btn btn-primary btn-lg" href="{{ route('courses.create') }}">
+                        <i class="bi bi-plus-lg me-2"></i>
+                        Ajouter
+                    </a>
+                @endif
             </div>
             <hr>
             @livewire('course.list-course')

@@ -16,13 +16,19 @@ class ListHomework extends Component
         $homework->done ? $homework->undone() : $homework->done();
     }
 
+    public function delete($homeworkId)
+    {
+        Homework::find($homeworkId)->delete();
+    }
+
     public function render()
     {
         if($this->course) {
-            $homeworks = $this->course->homeworks->groupBy('deadline');;
+            $homeworks = $this->course->homeworks->groupBy('deadline');
         } else {
             $homeworks = Homework
             ::orderBy('deadline', 'asc')
+            ->where('deadline', '>=', now())
             ->get()
             ->groupBy('deadline');
         }

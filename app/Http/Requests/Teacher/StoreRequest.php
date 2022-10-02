@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Homework;
+namespace App\Http\Requests\Teacher;
 
-use App\Models\Homework;
+use App\Models\Teacher;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -24,6 +24,6 @@ class StoreRequest extends FormRequest
      */
     public function rules()
     {
-        return Homework::$storeRules;
+        return Teacher::$storeRules;
     }
 }
