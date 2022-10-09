@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="">
                     <h1>
-                        <div class="btn-group me-2">
+                        {{-- <div class="btn-group me-2">
                             <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="{{ $homeworksView['icon'] }}"></i>
                             </button>
@@ -19,7 +19,8 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </div>
+                        </div> --}}
+                        <i class="bi bi-house me-2"></i>
                         Tous les devoirs
                     </h1>
                 </div>

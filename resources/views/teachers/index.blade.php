@@ -10,6 +10,12 @@
                     </a>
                     Tous les professeurs
                 </h1>
+                @if(auth()->user()->isAdmin())
+                    <a class="btn btn-primary btn-lg" href="{{ route('teachers.create') }}">
+                        <i class="bi bi-plus-lg me-2"></i>
+                        Ajouter
+                    </a>
+                @endif
             </div>
             <hr>
             @livewire('teacher.list-teacher')

@@ -24,7 +24,9 @@
             @if($course->teacher)
                 <span class="mx-1">
                     <i class="bi bi-person-fill me-1"></i>
-                    {{ $course->teacher->firstname ?? '' }} {{ $course->teacher->lastname ?? '' }}
+                    <a href="{{ route('teachers.show', $course->teacher) }}" class="text-decoration-none text-dark">
+                        {{ $course->teacher->firstname ?? '' }} {{ $course->teacher->lastname ?? '' }}
+                    </a>
                 </span>
             @endif
 

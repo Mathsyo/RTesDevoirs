@@ -18,16 +18,14 @@ class Homework extends Model
         'course_id',
     ];
 
-    public $storeRules = [
+    public static $storeRules = [
         'title' => ['required','string','max:255'],
         'description' => ['required','string','max:255'],
-        'slug' => ['required','string','max:255'],
         'deadline' => ['required','date'],
-        'type' => ['required','integer'],
         'course_id' => ['required','integer','exists:courses,id'],
     ];
 
-    public $updateRules = [
+    public static $updateRules = [
         'title' => ['sometimes','string','max:255'],
         'description' => ['sometimes','string','max:255'],
         'slug' => ['sometimes','string','max:255'],

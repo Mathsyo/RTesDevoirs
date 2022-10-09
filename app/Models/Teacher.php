@@ -15,13 +15,13 @@ class Teacher extends Model
         'email'
     ];
 
-    public $storeRules = [
+    public static $storeRules = [
         'firstname' => ['required','string','max:255'], 
         'lastname' => ['required','string','max:255'], 
         'email' => ['required','string','max:255'],
     ];
 
-    public $updateRules = [
+    public static $updateRules = [
         'firstname' => ['sometimes','string','max:255'], 
         'lastname' => ['sometimes','string','max:255'], 
         'email' => ['sometimes','string','max:255'],

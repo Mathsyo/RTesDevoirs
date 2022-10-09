@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password'
     ];
 
-    public $storeRules = [
+    public static $storeRules = [
         'lastname' => ['required','string','max:255'], 
         'firstname' => ['required','string','max:255'], 
         'login' => ['required','string','max:255'], 
@@ -30,7 +30,7 @@ class User extends Authenticatable
         'password' => ['required','string','max:255'],
     ];
 
-    public $updateRules = [
+    public static $updateRules = [
         'lastname' => ['sometimes','string','max:255'], 
         'firstname' => ['sometimes','string','max:255'], 
         'login' => ['sometimes','string','max:255'], 
@@ -41,6 +41,17 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $hidden = ['password'];
+
+    public static function generatePassword($length = 5)
+    {
+        $words = json_decode(file_get_contents('https://random-word-api.herokuapp.com/word?number=' . $length));
+        $password = '';
+        foreach ($words as $word) {
+            $password .= $word . '-';
+        }
+        $password .= rand(100, 999);
+        return $password;
+    }
 
     public function doneHomeworks()
     {

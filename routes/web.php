@@ -42,6 +42,7 @@ Route::prefix('/')->middleware('auth')->group(function () {
         // Homeworks
         // ==================================
         Route::prefix('homeworks')->name('homeworks.')->group( function() {
+                Route::get('/', [HomeworkController::class, 'index'])->name('index');
                 Route::get('/create', [HomeworkController::class, 'create'])->name('create');
                 Route::post('/store', [HomeworkController::class, 'store'])->name('store');
         });

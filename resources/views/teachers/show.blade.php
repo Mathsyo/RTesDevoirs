@@ -10,7 +10,21 @@
                     </a>
                     {{ $teacher->firstname ?? '' }} {{ $teacher->lastname ?? '' }}
                 </h1>
+                <a class="btn btn-outline-warning" href="{{ route('teachers.edit', $teacher) }}">
+                    <i class="bi bi-pencil me-2"></i>
+                    Modifier
+                </a>
             </div>
+            @if($teacher->courses)
+                @foreach ($teacher->courses as $course)
+                    <span class="mx-1">
+                        <i class="bi bi-person-fill me-1"></i>
+                        <a href="{{ route('courses.show', $course) }}" class="text-decoration-none text-dark">
+                            {{ $course->code }} - {{ $course->acronym ?? $course->name }}
+                        </a>
+                    </span>
+                @endforeach
+            @endif
             <hr>
             {{-- Coordonnées --}}
             <div class="my-3">

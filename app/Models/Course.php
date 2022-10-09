@@ -17,7 +17,7 @@ class Course extends Model
         'teacher_id'
     ];
 
-    public $storeRules = [
+    public static $storeRules = [
         'color' => ['required','string','max:255'], 
         'name' => ['required','string','max:255'], 
         'acronym' => ['required','string','max:255'], 
@@ -25,7 +25,7 @@ class Course extends Model
         'teacher_id' => ['required','integer','exists:teachers,id'],
     ];
 
-    public $updateRules = [
+    public static $updateRules = [
         'color' => ['sometimes','string','max:255'], 
         'name' => ['sometimes','string','max:255'], 
         'acronym' => ['sometimes','string','max:255'], 
