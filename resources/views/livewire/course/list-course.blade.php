@@ -21,7 +21,7 @@
                     <div>
                         <h5 class="mb-0">
                             <span class="text-muted">
-                                {{ $course->code }} {{ $course->acronym ? ' '.$course->acronym : '' }} 
+                                {{ $course->code }} {{ $course->acronym ? ' '.$course->acronym : '' }}
                             </span>
                             {!! $course->name ? '- '.$course->name : '' !!}
                         </h5>
@@ -48,6 +48,9 @@
                             <a href="{{ route('courses.edit', $course) }}" class="btn btn-sm btn-outline-warning">
                                 <i class="bi bi-pencil"></i>
                             </a>
+                            <button class="btn btn-outline-danger btn-sm" wire:click="delete({{ $course->id }})">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         @endif
                     </div>
                 </div>

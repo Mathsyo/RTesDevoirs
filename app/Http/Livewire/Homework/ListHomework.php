@@ -18,7 +18,9 @@ class ListHomework extends Component
 
     public function delete($homeworkId)
     {
-        Homework::find($homeworkId)->delete();
+        if(auth()->user()->isAdmin()) {
+            Homework::find($homeworkId)->delete();
+        }
     }
 
     public function render()

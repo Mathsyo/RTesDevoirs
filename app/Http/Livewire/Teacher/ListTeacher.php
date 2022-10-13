@@ -8,9 +8,16 @@ use Livewire\Component;
 class ListTeacher extends Component
 {
 
-    public $search; 
+    public $search;
 
     public $perPage = 10;
+
+    public function delete($teacherId)
+    {
+        if(auth()->user()->isAdmin()) {
+            Teacher::find($teacherId)->delete();
+        }
+    }
 
     public function render()
     {

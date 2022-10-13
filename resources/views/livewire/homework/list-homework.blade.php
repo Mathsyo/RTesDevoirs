@@ -20,14 +20,16 @@
                                 @endif
                             </span>
                         </div>
-                        <button class="btn btn-outline-danger" wire:click="delete({{ $homework->id }})">
-                            <i class="bi bi-trash"></i>
-                        </button>
+                        @if(auth()->user()->isAdmin())
+                            <button class="btn btn-outline-danger" wire:click="delete({{ $homework->id }})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        @endif
                     </label>
                 @endforeach
             </ul>
         @endforeach
-    @else 
+    @else
         <h2 class="text-muted text-center p-2">
             <i class="bi bi-exclamation-circle"></i>
             Aucun devoir

@@ -13,6 +13,11 @@
                         <i class="bi bi-list"></i>
                     </a>
                 </li>
+                <li class="nav-item d-flex align-items-center ms-3">
+                    <a class="text-primary bg-primary bg-opacity-25 rounded-3 px-3 py-1 text-decoration-none" href="https://github.com/Mathsyo/RTesDevoirs" target="_blank">
+                        v{{ env('APP_VERSION') }}
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

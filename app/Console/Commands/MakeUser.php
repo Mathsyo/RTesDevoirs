@@ -74,10 +74,7 @@ class MakeUser extends Command
         }
 
         if($this->confirm('Send welcome email ?', true)) {
-            $user['password'] = User::generatePassword();
             Mail::to($user['email'])->send(new WelcomeMail($user));
-        } else {
-            $user['password'] = $this->secret('What is your password?');
         }
 
         // Display the user's data

@@ -19,6 +19,7 @@
                     </button>
                 </div>
                 <hr>
+                @include('includes.alert')
                 <div class="row">
                     <div class="mb-3">
                         <label for="code" class="form-label">Code</label>
@@ -39,7 +40,7 @@
                         <label for="color" class="form-label">Couleur</label>
                         <input type="color" class="form-control" id="color" name="color" value="{{ $course->color }}">
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="teacher" class="form-label">Professeur</label>
                         <select class="form-select" id="teacher_id" name="teacher_id">

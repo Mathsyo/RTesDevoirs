@@ -33,6 +33,9 @@
                             <a href="{{ route('teachers.edit', $teacher) }}" class="btn btn-sm btn-outline-warning ">
                                 <i class="bi bi-pencil"></i>
                             </a>
+                            <button class="btn btn-outline-danger btn-sm" wire:click="delete({{ $teacher->id }})">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         @endif
                     </div>
                 </div>

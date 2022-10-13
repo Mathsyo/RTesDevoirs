@@ -31,6 +31,7 @@
             @endif
 
             <hr>
+            @include('includes.alert')
             <div class="my-3">
                     <h3 class="text-muted">Devoirs</h3>
                 @livewire('homework.list-homework', ['course' => $course])

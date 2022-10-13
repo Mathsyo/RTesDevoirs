@@ -20,6 +20,8 @@
 
                 <hr>
 
+                @include('includes.alert')
+
                 <div class="row">
 
                     <div class="mb-3">

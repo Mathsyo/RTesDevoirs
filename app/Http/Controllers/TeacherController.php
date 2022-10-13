@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Teacher\StoreRequest;
 use App\Http\Requests\Teacher\UpdateRequest;
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class TeacherController extends Controller
 
     public function create()
     {
-        return view('teachers.create');
+        $courses = Course::all();
+        return view('teachers.create', compact('courses'));
     }
 
     public function store(StoreRequest $request)

@@ -10,20 +10,20 @@ class Teacher extends Model
 {
 
     protected $fillable = [
-        'firstname', 
-        'lastname', 
+        'firstname',
+        'lastname',
         'email'
     ];
 
     public static $storeRules = [
-        'firstname' => ['required','string','max:255'], 
-        'lastname' => ['required','string','max:255'], 
+        'firstname' => ['required','string','max:255'],
+        'lastname' => ['required','string','max:255'],
         'email' => ['required','string','max:255'],
     ];
 
     public static $updateRules = [
-        'firstname' => ['sometimes','string','max:255'], 
-        'lastname' => ['sometimes','string','max:255'], 
+        'firstname' => ['sometimes','string','max:255'],
+        'lastname' => ['sometimes','string','max:255'],
         'email' => ['sometimes','string','max:255'],
     ];
 

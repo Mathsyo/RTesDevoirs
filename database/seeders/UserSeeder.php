@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
 
     public function run()
     {
-        $usersAndRoles = config('students.students');
+        $usersAndRoles = config('school.users');
 
         foreach ($usersAndRoles as $role => $users) {
             foreach($users as $user){

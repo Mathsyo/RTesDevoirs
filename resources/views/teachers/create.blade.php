@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('courses.store') }}" method="POST">
+    <form action="{{ route('teachers.store') }}" method="POST">
         @csrf
         <div class="card rounded-4 p-4 shadow-none">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <h1>
-                        <a href="{{ route('courses.index') }}" class="text-decoration-none text-dark me-2">
+                        <a href="{{ route('teachers.index') }}" class="text-decoration-none text-dark me-2">
                             <i class="bi bi-arrow-left"></i>
                         </a>
                         Ajouter un.e professeur.e
@@ -22,37 +22,23 @@
 
                 <div class="row">
 
+                    @include('includes.alert')
+
                     <div class="mb-3">
-                        <label for="code" class="form-label">Code</label>
-                        <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}">
+                        <label for="firstname" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" value="{{ old('firstname') }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="acronym" class="form-label">Acronyme</label>
-                        <input type="text" class="form-control" id="acronym" name="acronym" value="{{ old('acronym') }}">
+                        <label for="lastname" class="form-label">Prénom</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" value="{{ old('lastname') }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                     </div>
 
-                    <div class="mb-3">
-                        <label for="color" class="form-label">Couleur</label>
-                        <input type="color" class="form-control" id="color" name="color" value="{{ old('color') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="teacher" class="form-label">Professeur</label>
-                        <select class="form-select" id="teacher_id" name="teacher_id">
-                            <option value="">Aucun</option>
-                            @foreach ($teachers as $teacher)
-                                <option value="{{ $teacher->id }}" {{ old('teacher_id') == $teacher->id ? 'selected' : '' }}>
-                                    {{ $teacher->firstname }} {{ $teacher->lastname }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
             </div>
         </div>

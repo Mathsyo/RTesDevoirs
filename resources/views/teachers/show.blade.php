@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <h1>
-                    <a href="{{ route('home') }}" class="text-decoration-none text-dark me-2">
+                    <a href="{{ route('teachers.index') }}" class="text-decoration-none text-dark me-2">
                         <i class="bi bi-arrow-left"></i>
                     </a>
                     {{ $teacher->firstname ?? '' }} {{ $teacher->lastname ?? '' }}
@@ -26,6 +26,7 @@
                 @endforeach
             @endif
             <hr>
+            @include('includes.alert')
             {{-- Coordonnées --}}
             <div class="my-3">
                 <h3 class="text-muted">Coordonnées</h3>
@@ -73,6 +74,6 @@
                 $('#teacher-email').html($('#teacher-email').attr('data-email'));
             }, 1000);
         }
-        
+
     </script>
 @endpush
