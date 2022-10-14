@@ -10,10 +10,12 @@
                     </a>
                     {{ $course->code }} - {{ $course->acronym ?? $course->name }}
                 </h1>
-                <a class="btn btn-outline-warning" href="{{ route('courses.edit', $course) }}">
-                    <i class="bi bi-pencil me-2"></i>
-                    Modifier
-                </a>
+                @if(auth()->user()->isAdmin())
+                    <a class="btn btn-outline-warning" href="{{ route('courses.edit', $course) }}">
+                        <i class="bi bi-pencil me-2"></i>
+                        Modifier
+                    </a>
+                @endif
             </div>
             @if($course->homeworks->count() > 0)
                 <span class="mx-1">

@@ -10,10 +10,12 @@
                     </a>
                     {{ $teacher->firstname ?? '' }} {{ $teacher->lastname ?? '' }}
                 </h1>
-                <a class="btn btn-outline-warning" href="{{ route('teachers.edit', $teacher) }}">
-                    <i class="bi bi-pencil me-2"></i>
-                    Modifier
-                </a>
+                @if(auth()->user()->isAdmin())
+                    <a class="btn btn-outline-warning" href="{{ route('teachers.edit', $teacher) }}">
+                        <i class="bi bi-pencil me-2"></i>
+                        Modifier
+                    </a>
+                @endif
             </div>
             @if($teacher->courses)
                 @foreach ($teacher->courses as $course)
