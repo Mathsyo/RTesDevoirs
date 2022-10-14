@@ -1,5 +1,14 @@
 <div>
     @if($homeworks->count() > 0)
+        @if($showBefore == false)
+            <a href="{{ route('homeworks.index', ['showBefore' => '1']) }}" class="btn btn-ouline-light w-100">
+                Voir les anciens
+            </a>
+        @else
+            <a href="{{ route('homeworks.index') }}" class="btn btn-ouline-light w-100">
+                Voir les nouveaux
+            </a>
+        @endif
         @foreach($homeworks as $date => $homeworks)
             <ul class="list-group mb-3">
                 {{ \Carbon\Carbon::parse($date)->locale('fr')->isoFormat('dddd DD MMMM') }}
